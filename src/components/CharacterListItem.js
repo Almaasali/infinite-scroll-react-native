@@ -22,11 +22,18 @@ const CharacterListItem = ({ item }) => {
           <View
             style={[styles.iconStyle, { backgroundColor: iconColor }]}
           ></View>
-          <Text style={styles.statusStyle}>{item.status}</Text>
+          <Text
+            style={styles.statusStyle}
+          >{`${item.status} - ${item.species}`}</Text>
         </View>
         <View style={styles.locationContainer}>
-          <Text style={styles.locationTitle}></Text>
-          <Text style={styles.locationTextStyle}></Text>
+          <Text style={styles.locationTitle}>Last known location:</Text>
+          <Text style={styles.locationTextStyle}>{item.origin.name}</Text>
+        </View>
+
+        <View style={styles.locationContainer}>
+          <Text style={styles.locationTitle}>First seen in:</Text>
+          <Text style={styles.locationTextStyle}>{item.location.name}</Text>
         </View>
       </View>
     </View>
@@ -72,7 +79,7 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     fontSize: 14,
     justifyContent: "center",
-    marginTop: 5,
+    marginTop: 7,
   },
   iconStyle: {
     width: 15,
@@ -81,8 +88,16 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   locationContainer: {},
-  locationTitle: {},
-  locationTextStyle: {},
+  locationTitle: {
+    color: "#9e9e9e",
+    fontSize: 16,
+    paddingLeft: 10,
+  },
+  locationTextStyle: {
+    fontSize: 18,
+    color: "#ffffff",
+    paddingLeft: 10,
+  },
 });
 
 export default CharacterListItem;

@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     margin: 10,
     alignSelf: "center",
     borderRadius: 10,
+    paddingBottom: 30,
   },
   imageContainer: {
     width: window.width,
@@ -67,13 +68,11 @@ const styles = StyleSheet.create({
   },
   nameStyle: {
     color: "#f5f5f5",
-    alignSelf: "center",
-    fontSize: 20,
+    fontSize: 18,
     paddingTop: 10,
   },
   statusContainer: {
     flexDirection: "row",
-    justifyContent: "center",
   },
   statusStyle: {
     color: "#ffffff",

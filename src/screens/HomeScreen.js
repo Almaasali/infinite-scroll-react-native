@@ -1,30 +1,26 @@
-import React, { Component } from "react";
-import { View, StyleSheet, FlatList, Text } from "react-native";
+import React, { Component, lazy, Suspense } from "react";
+import { View, StyleSheet, Text } from "react-native";
 import { connect } from "react-redux";
-import CharacterListItem from "../components/CharacterListItem";
 import Spinner from "../components/Spinner";
 import { loadCharacters } from "../redux/actions";
 
+const CharacterList = lazy(() => import("../components/CharactersList"));
 class HomeScreen extends Component {
   componentDidMount = () => {
     this.props.loadCharacters();
   };
 
   render() {
-    const { isLoading, characters } = this.props;
-    return isLoading ? (
-      <Spinner />
-    ) : (
+    const { characters } = this.props;
+    return (
       <View style={styles.container}>
         <Text style={styles.title}>The Rick and Morty API</Text>
-        <FlatList
-          data={characters}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => <CharacterListItem item={item} />}
-          // onScrollEndDrag={() => {
-          //   this.props.loadCharacters();
-          // }}
-        />
+        <Suspense fallback={<Spinner />}>
+          <CharacterList
+            loadCharacters={this.props.loadCharacters}
+            characters={characters}
+          />
+        </Suspense>
       </View>
     );
   }
@@ -33,6 +29,7 @@ class HomeScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#24282f",
+    paddingBottom: 60,
   },
   title: {
     alignSelf: "center",
@@ -44,10 +41,10 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-  console.log("page state : ", state.nextPage);
   return {
     characters: state.characters,
     isLoading: state.isLoading,
+    nextPage: state.nextPage,
   };
 };
 

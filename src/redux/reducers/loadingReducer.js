@@ -1,12 +1,12 @@
-import { CHARACHTER } from "../actions/actionTypes";
+import { CHARACTER } from "../actions/actionTypes";
 
 export function loadingReducer(state = false, action) {
   switch (action.type) {
-    case CHARACHTER.CHARACHTER_LOAD:
+    case CHARACTER.CHARACTER_LOAD:
       return true;
-    case CHARACHTER.CHARACHTER_LOAD_SUCCESS:
+    case CHARACTER.CHARACTER_LOAD_SUCCESS:
       return false;
-    case CHARACHTER.CHARACHTER_LOAD_FAIL:
+    case CHARACTER.CHARACTER_LOAD_FAIL:
       return false;
 
     default:

@@ -1,21 +1,27 @@
-import { CHARACHTER } from "./actionTypes";
+import { CHARACTER } from "./actionTypes";
 
 export const loadCharacters = () => {
   return {
-    type: CHARACHTER.CHARACHTER_LOAD,
+    type: CHARACTER.CHARACTER_LOAD,
   };
 };
 
 export const setCharacters = (characters) => {
   return {
-    type: CHARACHTER.CHARACHTER_LOAD_SUCCESS,
+    type: CHARACTER.CHARACTER_LOAD_SUCCESS,
     characters,
   };
 };
 
 export const setError = (error) => {
   return {
-    type: CHARACHTER.CHARACHTER_LOAD_FAIL,
+    type: CHARACTER.CHARACTER_LOAD_FAIL,
     error,
+  };
+};
+export const setPagesCount = (pagesCount) => {
+  return {
+    type: CHARACTER.CHARACTER_HAS_MORE_DATA,
+    pagesCount,
   };
 };

@@ -1,6 +1,6 @@
 import { all } from "redux-saga/effects";
-import charachterSaga from "./characterSaga";
+import charachtersSaga from "./charactersSaga";
 
 export function* rootSaga() {
-  yield all([charachterSaga()]);
+  yield all([charachtersSaga()]);
 }

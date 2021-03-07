@@ -1,11 +1,11 @@
 import { CHARACHTER } from "../actions/actionTypes";
 
 export function characterReducer(state = [], action) {
-  switch (action.typed) {
+  switch (action.type) {
     case CHARACHTER.CHARACHTER_LOAD_SUCCESS:
-      return [...state, action.characters];
+      return [...state, ...action.characters];
 
     default:
-      break;
+      return state;
   }
 }

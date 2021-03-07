@@ -9,6 +9,6 @@ export function errorReducer(state = null, action) {
       return null;
 
     default:
-      state;
+      return state;
   }
 }
